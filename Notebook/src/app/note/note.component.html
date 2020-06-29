@@ -1,0 +1,38 @@
+<div class="note-container">
+    <mat-card style="background: whitesmoke;
+    margin: 2%;">
+        <mat-card *ngFor="let note of notes" class="left-panel" >
+
+            <div (click)="onSubmit(note)" class="left-panel-description">
+                <span>{{note.title}}</span>
+                <span>
+                    {{note.body}}
+                </span>
+            </div>
+            <div>  
+                <mat-icon aria-hidden="false" (click)="deleteNotes(note.id)" aria-label="Example home icon">delete</mat-icon>
+            </div>
+        </mat-card>
+    </mat-card>
+    <mat-card class="right-panel">
+    
+            <button mat-flat-button color="primary" (click)="addNewNote()" style="
+            margin-bottom: 2%;"> Add Notes</button>
+            
+        
+      
+            <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="body">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input matInput placeholder="Enter title" formControlName="title">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Body</mat-label>
+                    <input matInput placeholder="Enter body" formControlName="body">
+                </mat-form-field>
+                <button mat-button style="margin-left: 89%;"> Submit</button>
+            </form>
+     
+    </mat-card>
+</div>

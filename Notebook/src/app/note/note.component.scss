@@ -1,0 +1,21 @@
+.note-container{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin: 2%;
+    .left-panel{
+        display: grid;
+        grid-template-columns: 80% 20%;
+        margin: 2%;
+        .left-panel-description{
+            display: grid;
+            grid-template-rows: 40% 60%;
+        }
+    }
+    .right-panel{
+        margin: 1%;
+        background: whitesmoke;
+        .body{
+            display: grid;
+        }
+    }
+}
