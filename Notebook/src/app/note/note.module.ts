@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from '../app-routing.module';
+import { NgxSpinnerModule } from "ngx-spinner";
+
 @NgModule({
   declarations: [
     NoteComponent
@@ -26,7 +28,8 @@ import { AppRoutingModule } from '../app-routing.module';
     MatFormFieldModule,
     MatIconModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxSpinnerModule
   ],
 
   exports: [NoteComponent],

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, AbstractFormGroupDirective } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs/internal/observable/throwError';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-note',
@@ -15,7 +16,8 @@ export class NoteComponent implements OnInit {
   index: number;
   constructor(private router: Router,
     private fb: FormBuilder,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private spinner: NgxSpinnerService) {
     this.notes = [];
     this.index = 0;
   }
@@ -29,10 +31,13 @@ export class NoteComponent implements OnInit {
   }
   onSubmit(note) {
     let isExist = this.notes.filter(x => x.id == note.id);
-
+  
     if (isExist && note.id != null) {
+      
+      this.spinner.show();
       this.http.put<any>('https://httpbin.org/put', { body: note.value }).subscribe(
         result => {
+          this.spinner.hide();
           this.form.setValue({
             id: note.id,
             title: note.title,

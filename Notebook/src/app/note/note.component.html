@@ -3,12 +3,12 @@
     margin: 2%;">
         <mat-card *ngFor="let note of notes" class="left-panel" >
 
-            <div (click)="onSubmit(note)" class="left-panel-description">
+            <button mat-flat-button (click)="onSubmit(note)" class="left-panel-description">
                 <span>{{note.title}}</span>
                 <span>
                     {{note.body}}
                 </span>
-            </div>
+            </button>
             <div>  
                 <mat-icon aria-hidden="false" (click)="deleteNotes(note.id)" aria-label="Example home icon">delete</mat-icon>
             </div>
@@ -16,6 +16,9 @@
     </mat-card>
     <mat-card class="right-panel">
     
+        <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="small" color="#fff" type="ball-scale-multiple">
+            <p style="font-size: 20px; color: white">Loading...</p>
+          </ngx-spinner>
             <button mat-flat-button color="primary" (click)="addNewNote()" style="
             margin-bottom: 2%;"> Add Notes</button>
             
@@ -31,7 +34,9 @@
                     <mat-label>Body</mat-label>
                     <input matInput placeholder="Enter body" formControlName="body">
                 </mat-form-field>
-                <button mat-button style="margin-left: 89%;"> Submit</button>
+                <div class="submit-button">
+                    <button mat-button class="submit"> Submit</button>
+                </div>
             </form>
      
     </mat-card>
